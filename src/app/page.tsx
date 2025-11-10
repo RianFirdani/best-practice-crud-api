@@ -1,11 +1,14 @@
 import { getProduct } from "@/libs/useProducts";
 import { Table ,Container } from "@chakra-ui/react";
 import Form from "./components/form";
+import ButtonEdit from "./components/ButtonEdit";
+import ButtonDelete from "./components/ButtonDelete";
 
 export default async function Home() {
   
    const products =  await getProduct()
 
+   
   return (
     <Container>
      <Table.Root size="sm">
@@ -26,6 +29,8 @@ export default async function Home() {
               <Table.Cell>{product.name}</Table.Cell>
               <Table.Cell>{product.price}</Table.Cell>
               <Table.Cell>{product.image}</Table.Cell>
+              <Table.Cell><ButtonEdit id={product.id}/></Table.Cell>
+              <Table.Cell><ButtonDelete id={product.id}/></Table.Cell>
             </Table.Row>
           )
         })}
